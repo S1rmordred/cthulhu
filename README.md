@@ -9,7 +9,7 @@ This is a simple script that uses famous crawlers and link collectors to create 
 - Aggregates and outputs all discovered links.
 
 ## Installation
-**Note : make sure hakrawler, katana, gospider, waymore and httpx are present and installed **
+**Note : make sure hakrawler, katana, gospider, waymore and httpx are present and installed**
 1. Clone the repository:
     
     git clone https://github.com/S1rmordred/cthulhu.git
