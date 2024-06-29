@@ -30,14 +30,15 @@ echo $1 |hakrawler >> /tmp/cthulhu.txt
 echo "[+] Calling katana";
 katana -u $1 -silent -jc -jsl -kf all >> /tmp/cthulhu.txt;
 
-echo "[+] Calling waybackurl";
-waybackurls $1 >> /tmp/cthulhu.txt;
+echo "[+] Calling waymore";
+waymore -i $1 -mode U -oU /tmp/cthulhu1.txt;
 
 echo "[+] Calling gospider";
 gospider -s $1 |grep -Eo "$TARGET_URL[^ ]*"  >> /tmp/cthulhu.txt;
 #mv /tmp/test.txt .;
 #echo "moved test.txt file to `pwd`";
-cat /tmp/cthulhu.txt |grep -Eo "$TARGET_URL[^ ]*" |sort -u|grep -v ".js" |grep -v ".css" |httpx -silent -random-agent -o cthulhu.txt > /dev/null 2>&1;
+cat /tmp/cthulhu1.txt >>  /tmp/cthulhu.txt ;
+cat /tmp/cthulhu.txt |grep -Eo "$TARGET_URL[^ ]*" |sort -u|grep -v ".js" |grep -v ".css" |httpx -duc -silent -random-agent -o cthulhu.txt > /dev/null 2>&1;
 echo "[+] result is stored in `pwd`/chulhu.txt";
 echo "";
 rm /tmp/cthulhu.txt;
